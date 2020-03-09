@@ -14,19 +14,19 @@ variable "name_ubt" {
   description   = "Nome da Instancia"
   default       = "web-server"
 }
-#imagem amazon-linux
-variable "image_amz" {
-  description   = "AMI de imagem amazon-linux"
-  default       = "amzn2-ami-hvm-2.0.20200207.1-x86_64-gp2"
+#imagem ubuntu-xen
+variable "image_xen" {
+  description   = "AMI de imagem ubuntu-xenial"
+  default       = "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20200129"
 }
 
-#imagem amazon-linux
-variable "owners_amz" {
+#imagem ubuntu-xen
+variable "owners_xen" {
   description   = "Proprietario da imagem"
-  default       = "amazon"
+  default       = "099720109477"
 }
 #imagem amazon-linux
-variable "name_amz" {
+variable "name_xen" {
   description   = "Nome da Instancia"
   default       = "app-server"
 }

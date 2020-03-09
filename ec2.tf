@@ -9,15 +9,15 @@ data "aws_ami" "ubuntu" {
   owners    = ["${var.owners_ubt}"]
 }
 
-data "aws_ami" "amazon" {
+data "aws_ami" "ubuntu-xen" {
   most_recent   = true
 
   filter {
     name    = "name"
-    values  = ["${var.image_amz}"]
+    values  = ["${var.image_xen}"]
   }
 
-  owners    = ["${var.owners_amz}"]
+  owners    = ["${var.owners_xen}"]
 }
 
 
@@ -32,12 +32,12 @@ resource "aws_instance" "web-server" {
 
 resource "aws_instance" "app-server" {
   count          = 2
-  provider       = aws.east1
-  ami            = "${data.aws_ami.amazon.id}"
+#  provider       = aws.east1
+  ami            = "${data.aws_ami.ubuntu-xen.id}"
   instance_type  = var.type
 
   tags = {
-      Name  = var.name_amz
+      Name  = var.name_xen
   }
 }
 
