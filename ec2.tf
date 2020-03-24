@@ -10,7 +10,7 @@ data "aws_ami" "ubuntu" {
 }
 
 data "aws_ami" "amazon" {
-  provider    = aws.east1
+  provider    = aws.east2
   most_recent = true
 
   filter {
@@ -25,15 +25,22 @@ data "aws_ami" "amazon" {
 resource "aws_instance" "web-server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.type
+  key_name      = "webserver"
 
   tags = {
     Name = var.name_ubt
   }
+
+  connection {
+  type        = "ssh"
+  user        = "ec2-user"
+  host        = "${self.public_ip}"
+  private_key = "${file("webserver.pem")}"
+}
 }
 
 resource "aws_instance" "app-server" {
-  count         = 2
-  provider      = aws.east1
+  provider      = aws.east2
   ami           = data.aws_ami.amazon.id
   instance_type = var.type
 
