@@ -14,22 +14,6 @@ variable "name_ubt" {
   description = "Nome da Instancia"
   default     = "web-server"
 }
-#imagem amazon-linux
-variable "image_amz" {
-  description = "AMI de imagem Amazon-linux"
-  default     = ["amzn2-ami-hvm-2.0.20200207.1-x86_64-gp2"]
-}
-
-#imagem amazon-linux
-variable "owners_amz" {
-  description = "Proprietario da imagem"
-  default     = ["amazon"]
-}
-#imagem amazon-linux
-variable "name_amz" {
-  description = "Nome da Instancia"
-  default     = "app-server"
-}
 
 variable "type" {
   description = "Tipo da Instancia"
@@ -49,4 +33,9 @@ variable "vpc_name" {
 variable "sg_name" {
   description = "Nome do Security Group"
   default     = "sg-web"
+}
+
+variable "sb_name" {
+  description = "Nome do Security Group"
+  default     = "sb-web"
 }
